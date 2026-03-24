@@ -1,0 +1,158 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Registration Form</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="form-wrapper">
+            <h1>Student Registration Form</h1>
+            <p class="subtitle">Please fill in all the details below</p>
+
+            <!-- Pure HTML form: uses built-in validation and CSS-only feedback -->
+            <form id="registrationForm" action="#success" method="get">
+                <!-- Personal Information Section -->
+                <fieldset>
+                    <legend>Personal Information</legend>
+
+                    <div class="form-group">
+                        <label for="fullName">Full Name *</label>
+                        <input type="text" id="fullName" name="fullName" placeholder="Enter your full name" required
+                            minlength="3">
+                        <span class="error-message">Full name is required (min 3 chars)</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" id="email" name="email" placeholder="Enter your email" required>
+                        <span class="error-message">Please enter a valid email address</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="phone">Phone Number *</label>
+                        <input type="tel" id="phone" name="phone" placeholder="10 digits" required pattern="[0-9]{10}"
+                            title="Enter 10 digit phone number">
+                        <span class="error-message">Phone number must be 10 digits</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="dob">Date of Birth *</label>
+                        <input type="date" id="dob" name="dob" required max="2010-03-24"
+                            title="You must be at least 16 years old">
+                        <span class="error-message">You must be at least 16 years old</span>
+                    </div>
+                </fieldset>
+
+                <!-- Academic Information Section -->
+                <fieldset>
+                    <legend>Academic Information</legend>
+
+                    <div class="form-group">
+                        <label for="studentId">Student ID *</label>
+                        <input type="text" id="studentId" name="studentId" placeholder="Enter your student ID" required
+                            minlength="3">
+                        <span class="error-message">Student ID is required (min 3 chars)</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="course">Course/Program *</label>
+                        <select id="course" name="course" required>
+                            <option value="">Select a course</option>
+                            <option value="B.Tech">B.Tech</option>
+                            <option value="B.Sc">B.Sc</option>
+                            <option value="B.A">B.A</option>
+                            <option value="B.Com">B.Com</option>
+                            <option value="MBA">MBA</option>
+                        </select>
+                        <span class="error-message">Please select a course</span>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="semester">Semester *</label>
+                        <select id="semester" name="semester" required>
+                            <option value="">Select semester</option>
+                            <option value="1">Semester 1</option>
+                            <option value="2">Semester 2</option>
+                            <option value="3">Semester 3</option>
+                            <option value="4">Semester 4</option>
+                            <option value="5">Semester 5</option>
+                            <option value="6">Semester 6</option>
+                        </select>
+                        <span class="error-message">Please select a semester</span>
+                    </div>
+                </fieldset>
+
+                <!-- Address Section -->
+                <fieldset>
+                    <legend>Address</legend>
+
+                    <div class="form-group">
+                        <label for="address">Street Address *</label>
+                        <input type="text" id="address" name="address" placeholder="Enter your address" required>
+                        <span class="error-message">Address is required</span>
+                    </div>
+
+                    <div class="form-row">
+                        <div class="form-group">
+                            <label for="city">City *</label>
+                            <input type="text" id="city" name="city" placeholder="Enter city" required>
+                            <span class="error-message">City is required</span>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="state">State *</label>
+                            <input type="text" id="state" name="state" placeholder="Enter state" required>
+                            <span class="error-message">State is required</span>
+                        </div>
+                    </div>
+
+                    <div class="form-group">
+                        <label for="zipcode">Zip Code *</label>
+                        <input type="text" id="zipcode" name="zipcode" placeholder="Enter zip code" required
+                            pattern="[0-9]{5,6}" title="Enter 5 or 6 digit zip code">
+                        <span class="error-message">Zip code must be 5-6 digits</span>
+                    </div>
+                </fieldset>
+
+                <!-- Additional Options -->
+                <fieldset>
+                    <legend>Additional Information</legend>
+
+                    <div class="form-group checkbox-group">
+                        <label for="hostel">
+                            <input type="checkbox" id="hostel" name="hostel">
+                            Do you need hostel accommodation?
+                        </label>
+                    </div>
+
+                    <div class="form-group checkbox-group">
+                        <label for="terms">
+                            <input type="checkbox" id="terms" name="terms" required>
+                            I agree to the terms and conditions *
+                        </label>
+                        <span class="error-message">You must agree to the terms and conditions</span>
+                    </div>
+                </fieldset>
+
+                <!-- Form Buttons -->
+                <div class="button-group">
+                    <button type="submit" class="btn btn-submit">Register</button>
+                    <button type="reset" class="btn btn-reset">Clear Form</button>
+                </div>
+
+                <!-- Success Message (CSS-only) -->
+                <div id="success" class="success-message">
+                    Registration submitted successfully!
+                </div>
+            </form>
+        </div>
+    </div>
+
+</body>
+
+</html>

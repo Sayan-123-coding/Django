@@ -1,0 +1,266 @@
+/* ========== General Styles ========== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 20px;
+  color: #333;
+}
+
+/* ========== Container Styles ========== */
+.container {
+  width: 100%;
+  max-width: 800px;
+}
+
+.form-wrapper {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
+  padding: 40px;
+}
+
+h1 {
+  color: #667eea;
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 28px;
+  font-weight: 600;
+}
+
+.subtitle {
+  text-align: center;
+  color: #777;
+  margin-bottom: 30px;
+  font-size: 14px;
+}
+
+/* ========== Fieldset Styles ========== */
+fieldset {
+  border: none;
+  margin-bottom: 30px;
+  padding-bottom: 20px;
+  border-bottom: 2px solid #f0f0f0;
+}
+
+fieldset:last-of-type {
+  border-bottom: none;
+}
+
+legend {
+  font-size: 18px;
+  font-weight: 600;
+  color: #667eea;
+  margin-bottom: 20px;
+  padding-bottom: 10px;
+  border-bottom: 2px solid #667eea;
+  width: 100%;
+}
+
+/* ========== Form Group Styles ========== */
+.form-group {
+  margin-bottom: 20px;
+}
+
+.form-row {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 20px;
+}
+
+label {
+  display: block;
+  font-weight: 500;
+  margin-bottom: 8px;
+  color: #333;
+  font-size: 14px;
+}
+
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+input[type="date"],
+select {
+  width: 100%;
+  padding: 12px 15px;
+  border: 2px solid #e0e0e0;
+  border-radius: 5px;
+  font-size: 14px;
+  transition: all 0.3s ease;
+  background-color: #f9f9f9;
+  font-family: inherit;
+}
+
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+input[type="date"]:focus,
+select:focus {
+  outline: none;
+  border-color: #667eea;
+  background-color: #fff;
+  box-shadow: 0 0 8px rgba(102, 126, 234, 0.1);
+}
+
+input:invalid:not(:placeholder-shown) {
+  border-color: #e74c3c;
+}
+
+select {
+  cursor: pointer;
+}
+
+/* ========== Checkbox Styles ========== */
+.checkbox-group label {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+  margin-bottom: 15px;
+}
+
+input[type="checkbox"] {
+  width: 18px;
+  height: 18px;
+  margin-right: 10px;
+  cursor: pointer;
+  accent-color: #667eea;
+}
+
+/* ========== Error Message Styles (CSS-only) ========== */
+.error-message {
+  display: none;
+  color: #e74c3c;
+  font-size: 12px;
+  margin-top: 5px;
+  min-height: 18px;
+}
+
+/* Show the adjacent message when the field is invalid */
+input:invalid + .error-message,
+select:invalid + .error-message {
+  display: block;
+}
+
+/* Success message displayed when fragment matches #success */
+#success {
+  display: none;
+}
+
+#success:target {
+  display: block;
+}
+
+/* ========== Button Styles ========== */
+.button-group {
+  display: flex;
+  gap: 15px;
+  margin-top: 30px;
+  justify-content: center;
+}
+
+.btn {
+  padding: 12px 40px;
+  font-size: 16px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s ease;
+}
+
+.btn-submit {
+  background-color: #667eea;
+  color: white;
+}
+
+.btn-submit:hover {
+  background-color: #5568d3;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+}
+
+.btn-submit:active {
+  transform: translateY(0);
+}
+
+.btn-reset {
+  background-color: #95a5a6;
+  color: white;
+}
+
+.btn-reset:hover {
+  background-color: #7f8c8d;
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(149, 165, 166, 0.4);
+}
+
+.btn-reset:active {
+  transform: translateY(0);
+}
+
+/* ========== Success Message Styles ========== */
+.success-message {
+  display: none;
+  background-color: #d4edda;
+  color: #155724;
+  padding: 15px;
+  border-radius: 5px;
+  border: 1px solid #c3e6cb;
+  margin-top: 20px;
+  text-align: center;
+  font-weight: 500;
+  animation: slideIn 0.5s ease;
+}
+
+.success-message.show {
+  display: block;
+}
+
+/* ========== Animation ========== */
+@keyframes slideIn {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ========== Responsive Design ========== */
+@media (max-width: 600px) {
+  .form-wrapper {
+    padding: 25px;
+  }
+
+  h1 {
+    font-size: 24px;
+  }
+
+  legend {
+    font-size: 16px;
+  }
+
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 15px;
+  }
+
+  .button-group {
+    flex-direction: column;
+  }
+
+  .btn {
+    width: 100%;
+  }
+}
