@@ -5,4 +5,12 @@
 {% block content %}
     <h1>Welcome to Django Website</h1>
     <p>This is a simple Django website.</p>
+
+    {% for product in products %}
+            <h2>{{ product.name }}</h2>
+            <p>${{ product.price }}</p>
+            <p>{{ product.description }}</p>
+            <img src="{{ product.image.url }}" alt="{{ product.name }}" width="200">
+    {% endfor %}
 {% endblock %}
+
