@@ -1,16 +1,47 @@
-{% extends 'website/layout.html' %}
-
-{% block title %}Home{% endblock %}
-
-{% block content %}
-    <h1>Welcome to Django Website</h1>
-    <p>This is a simple Django website.</p>
-
-    {% for product in products %}
-            <h2>{{ product.name }}</h2>
-            <p>${{ product.price }}</p>
-            <p>{{ product.description }}</p>
-            <img src="{{ product.image.url }}" alt="{{ product.name }}" width="200">
-    {% endfor %}
+{% extends 'website/layout.html' %} {% block title %}Products{% endblock %} 
+{%block content %}
+<h1>Our Products</h1>
+<div class="products-container">
+  {% for product in products %}
+  <div class="product-card">
+    <div class="product-status">
+      {% if product.status == 'available' %}
+      <span class="status-badge available">Available</span>
+      {% elif product.status == 'out_of_stock' %}
+      <span class="status-badge out-of-stock">Out of Stock</span>
+      {% elif product.status == 'unavailable' %}
+      <span class="status-badge unavailable">Unavailable</span>
+      {% else %}
+      <span class="status-badge discontinued">Discontinued</span>
+      {% endif %}
+    </div>
+    <h2>{{ product.name }}</h2>
+    <p><strong>${{ product.price }}</strong></p>
+    <p>{{ product.description }}</p>
+    <img src="{{ product.image.url }}" alt="{{ product.name }}" width="200" />
+    <div class="product-card-buttons">
+      <a
+        href="{% url 'myApp:product_detail' product.id %}"
+        class="product-details-btn"
+      >
+        Product Details
+      </a>
+      <button
+        class="add-to-cart-btn {% if product.status != 'available' %}disabled{% endif %}"
+        {%
+        if
+        product.status
+        !="available"
+        %}disabled{%
+        endif
+        %}
+      >
+        Add to Cart
+      </button>
+    </div>
+  </div>
+  {% empty %}
+  <p>No products available.</p>
+  {% endfor %}
+</div>
 {% endblock %}
-

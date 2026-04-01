@@ -1,0 +1,57 @@
+{% extends 'website/layout.html' %} 
+{% block title %}{{ product.name }}{%endblock %} 
+{% block content %}
+<div class="product-detail-container">
+  <a href="{% url 'myApp:app' %}" class="back-link">← Back to Products</a>
+
+  <div class="product-detail-card">
+    <div class="product-detail-image">
+      <img src="{{ product.image.url }}" alt="{{ product.name }}" />
+    </div>
+
+    <div class="product-detail-info">
+      <h1>{{ product.name }}</h1>
+
+      <div class="product-detail-status">
+        {% if product.status == 'available' %}
+        <span class="status-badge available">Available</span>
+        {% elif product.status == 'out_of_stock' %}
+        <span class="status-badge out-of-stock">Out of Stock</span>
+        {% elif product.status == 'unavailable' %}
+        <span class="status-badge unavailable">Unavailable</span>
+        {% else %}
+        <span class="status-badge discontinued">Discontinued</span>
+        {% endif %}
+      </div>
+
+      <div class="product-detail-price">
+        <h2>${{ product.price }}</h2>
+      </div>
+
+      <div class="product-detail-description">
+        <h3>Description</h3>
+        <p>{{ product.description }}</p>
+      </div>
+
+      <div class="product-detail-meta">
+        <p><strong>Product ID:</strong> {{ product.id }}</p>
+        <p><strong>Created:</strong> {{ product.created_at|date:"M d, Y" }}</p>
+        <p><strong>Status:</strong> {{ product.get_status_display }}</p>
+      </div>
+
+      <button
+        class="add-to-cart-btn-large {% if product.status != 'available' %}disabled{% endif %}"
+        {%
+        if
+        product.status
+        !="available"
+        %}disabled{%
+        endif
+        %}
+      >
+        Add to Cart
+      </button>
+    </div>
+  </div>
+</div>
+{% endblock %}
